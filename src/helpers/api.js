@@ -15,10 +15,39 @@ async function fetchTrendingMovies() {
   return response.data.results;
 }
 
+async function fetchMovieSearch(query) {
+  const response = await axios.get(
+    `/search/movie?query=${query}&language=en-US`,
+    options
+  );
+  return response.data.results;
+}
 async function fetchMovieDetails(id) {
   const response = await axios.get(`/movie/${id}?language=en-US`, options);
   //   console.log(response.data);
   return response.data;
 }
 
-export { fetchTrendingMovies, fetchMovieDetails };
+async function fetchCast(id) {
+  const response = await axios.get(
+    `movie/${id}/credits?language=en-US`,
+    options
+  );
+  return response.data.cast;
+}
+
+async function fetchReview(id) {
+  const response = await axios.get(
+    `movie/${id}/reviews?language=en-US`,
+    options
+  );
+  return response.data.results;
+}
+
+export {
+  fetchTrendingMovies,
+  fetchMovieSearch,
+  fetchMovieDetails,
+  fetchCast,
+  fetchReview,
+};

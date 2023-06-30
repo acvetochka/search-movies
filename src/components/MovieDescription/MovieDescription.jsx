@@ -1,60 +1,84 @@
-import { useState } from 'react';
-import { Container } from './MovieDescription.styled';
-// import error from './images/error.jpg';
+import { Outlet, useLocation } from 'react-router-dom';
+import { useRef, Suspense } from 'react';
+import PropTypes from 'prop-types';
+import {
+  Container,
+  GoBack,
+  Description,
+  Title,
+  Text,
+  Addition,
+  AdditionList,
+  AdditionLink,
+} from './MovieDescription.styled';
+import what from './what.jpg';
 
-// import { fetchImages } from 'helpers/api';
-
-function MovieDescription({ details, id }) {
-  const [genresStr, setGernesStr] = useState('');
+function MovieDescription({ details }) {
   const { title, release_date, vote_average, overview, genres, poster_path } =
     details;
-  // console.log(genres);
   const date = new Date(release_date).getFullYear();
-  // const genresArr = [];
-  let genreString = '';
-  setTimeout(() => {
-    // [...genres].forEach(genre => genresArr.push(genre.name));
-    if (genres) {
-      for (const genre of genres) {
-        // console.log(genre.name);
-        genreString += genre.name + '  ';
-        // console.log(genreString);
-        // setGernesStr(genre.name);
-        // genresArr.push(genre.name);
-      }
-      setGernesStr(genreString);
-    }
-    // setGernesStr(genresArr.join(' '));
-  }, 200);
-
-  // fetchImages(id).then(res => console.log(res));
+  const location = useLocation();
+  const backLinkLocation = useRef(location.state?.from ?? './movies');
 
   return (
     <>
-      <Container>
-        {poster_path ? (
-          <img src={'https://image.tmdb.org/t/p/w300' + poster_path} alt="" />
-        ) : (
-          // <img src={error} alt="заглушка" />
-          <p>Not found</p>
-        )}
-        {/* <img src={'https://image.tmdb.org/t/p/w300' + poster_path} alt="" /> */}
-        <div>
-          <h2>
-            {title} ({date})
-          </h2>
-          <p>User score: {vote_average * 10}%</p>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <p>{genresStr}</p>
-        </div>
-      </Container>
-      <div>
-        <h3>Additional information</h3>
-      </div>
+      <GoBack to={backLinkLocation.current}>Go back</GoBack>
+      {details && (
+        <>
+          <Container>
+            <img
+              src={
+                poster_path
+                  ? 'https://image.tmdb.org/t/p/w300' + poster_path
+                  : what
+              }
+              width={250}
+              height={400}
+              alt="poster"
+            />
+            <Description>
+              <Title>
+                {title} ({date})
+              </Title>
+              <p>User score: {Math.round(vote_average * 10)}%</p>
+              <h3>Overview</h3>
+              <Text>{overview}</Text>
+              <h3>Genres</h3>
+              {genres
+                ? genres.map(genre => genre.name + ' ')
+                : 'Not information'}
+            </Description>
+          </Container>
+          <Addition>
+            <h3>Additional information</h3>
+            <AdditionList>
+              <li>
+                <AdditionLink to="cast">Cast</AdditionLink>
+              </li>
+              <li>
+                <AdditionLink to="review">Review</AdditionLink>
+              </li>
+            </AdditionList>
+          </Addition>
+        </>
+      )}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
+
+MovieDescription.propTypes = {
+  // details: PropTypes.object.isRequired,
+  details: PropTypes.shape({
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+    genres: PropTypes.array,
+    poster_path: PropTypes.string,
+  }).isRequired,
+};
 
 export default MovieDescription;
