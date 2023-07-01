@@ -24,30 +24,20 @@ async function fetchMovieSearch(query) {
 }
 async function fetchMovieDetails(id) {
   const response = await axios.get(`/movie/${id}?language=en-US`, options);
-  //   console.log(response.data);
   return response.data;
 }
 
-async function fetchCast(id) {
+async function fetchAddition(id, param) {
   const response = await axios.get(
-    `movie/${id}/credits?language=en-US`,
+    `movie/${id}/${param}?language=en-US`,
     options
   );
-  return response.data.cast;
-}
-
-async function fetchReview(id) {
-  const response = await axios.get(
-    `movie/${id}/reviews?language=en-US`,
-    options
-  );
-  return response.data.results;
+  return response.data;
 }
 
 export {
   fetchTrendingMovies,
   fetchMovieSearch,
   fetchMovieDetails,
-  fetchCast,
-  fetchReview,
+  fetchAddition,
 };

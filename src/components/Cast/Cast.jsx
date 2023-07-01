@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchCast } from 'helpers/api';
+import { fetchAddition } from 'helpers/api';
 import photo from './photo.jpg';
 import { CastList, CastItem, CastText, Name } from './Cast.styled';
 
@@ -9,8 +9,11 @@ function Cast() {
   const [cast, setCast] = useState([]);
   useEffect(() => {
     if (!movieId) return;
-    fetchCast(movieId)
-      .then(res => setCast([...res]))
+    fetchAddition(movieId, 'credits')
+      .then(res => {
+        const castArr = res.cast;
+        setCast([...castArr]);
+      })
       .catch(err => console.log(err));
   }, [movieId]);
 

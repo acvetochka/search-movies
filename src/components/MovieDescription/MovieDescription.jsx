@@ -70,7 +70,6 @@ function MovieDescription({ details }) {
 }
 
 MovieDescription.propTypes = {
-  // details: PropTypes.object.isRequired,
   details: PropTypes.shape({
     title: PropTypes.string,
     release_date: PropTypes.string,
