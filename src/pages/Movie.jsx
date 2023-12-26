@@ -20,6 +20,7 @@ function Movie() {
       const allMovies = res.filter(m => m.title);
       setMovies([...allMovies]);
     });
+    // console.log(movies);
   }, [query]);
 
   return (

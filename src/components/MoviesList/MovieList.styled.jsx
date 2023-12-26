@@ -40,7 +40,7 @@ const MovieLink = styled(Link)`
 
 const MovieTitleWrapper = styled.div`
   /* word-wrap: break-word; */
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
   /* white-space: nowrap; */
   overflow: hidden;
   position: absolute;
@@ -48,11 +48,13 @@ const MovieTitleWrapper = styled.div`
   left: 0;
   width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 5px;
   align-items: center;
   justify-content: center;
   background-color: var(--accent);
   padding: 5px;
-  height: 30%;
+  height: 40%;
   transform: translateY(30%);
   opacity: 0;
   /* background-color: $primary-accent-color; */
@@ -69,6 +71,7 @@ const MovieTitle = styled.p`
   word-wrap: break-word;
   text-overflow: ellipsis;
   overflow: hidden;
+  /* height: 100%; */
   max-height: 3em; /* Встановлюємо максимальну висоту на три рядки */
   line-height: 1em;
   /* Встановлюємо висоту лінії тексту на один рядок */

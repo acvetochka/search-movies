@@ -41,3 +41,7 @@ img {
   object-fit: cover;
   /* height: auto; */
 }
+
+p {
+  margin: 0;
+}

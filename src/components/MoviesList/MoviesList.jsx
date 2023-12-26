@@ -12,6 +12,11 @@ import what from '../../images/what.jpg';
 function MoviesList({ movies }) {
   // console.log(movies);
   const location = useLocation();
+
+  const dateToYear = date => {
+    return new Date(date).getFullYear();
+  };
+  // const date = new Date(release_date).getFullYear();
   // const bestMovie = movies[0];
   // const restMovies = [...movies.slice(1)];
   // console.log(bestMovie);
@@ -21,7 +26,7 @@ function MoviesList({ movies }) {
     <>
       <List>
         {movies.map(
-          ({ id, title, poster_path }) =>
+          ({ id, title, poster_path, release_date }) =>
             title && (
               <MovieItem key={id}>
                 <MovieLink
@@ -42,6 +47,7 @@ function MoviesList({ movies }) {
                   />
                   <MovieTitleWrapper>
                     <MovieTitle>{title}</MovieTitle>
+                    {release_date && <p>{dateToYear(release_date)}</p>}
                   </MovieTitleWrapper>
                 </MovieLink>
               </MovieItem>

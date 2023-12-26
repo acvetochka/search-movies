@@ -62,14 +62,16 @@ function MovieDescription({ details }) {
                 ? genres.map(genre => genre.name + ' ')
                 : 'Not information'}
               <LinkWrapper>
-                <HomeLink
-                  href={homepage}
-                  target="_blank"
-                  rel="noreferrer noopener nofollow"
-                >
-                  Official page
-                  <BiLinkExternal width={16} height={16} />
-                </HomeLink>
+                {homepage && (
+                  <HomeLink
+                    href={homepage}
+                    target="_blank"
+                    rel="noreferrer noopener nofollow"
+                  >
+                    Official page
+                    <BiLinkExternal width={16} height={16} />
+                  </HomeLink>
+                )}
               </LinkWrapper>
             </Description>
           </Container>
