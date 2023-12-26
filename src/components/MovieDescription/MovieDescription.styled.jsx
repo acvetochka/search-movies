@@ -1,6 +1,26 @@
 import styled from '@emotion/styled';
 import { Link, NavLink } from 'react-router-dom';
 
+const Wrapper = styled.div``;
+
+const Bg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  z-index: -1;
+  opacity: 0.2;
+  background-image: url(${props => props.bg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* filter: blur(5px); */
+  backdrop-filter: blur(200px);
+  backdrop-filter: opacity(20%);
+`;
+
 const Container = styled.div`
   display: flex;
   margin-bottom: 20px;
@@ -13,7 +33,7 @@ const GoBack = styled(Link)`
 
   &:hover,
   &:focus {
-    color: #c25151;
+    color: var(--accent);
     font-weight: bold;
   }
 
@@ -48,15 +68,40 @@ const AdditionLink = styled(NavLink)`
   margin-bottom: 10px;
   &:hover,
   &:focus {
-    color: #c25151;
+    color: var(--accent);
   }
   &.active {
-    color: #c25151;
+    color: var(--accent);
     font-weight: bold;
   }
 `;
 
+const LinkWrapper = styled.div`
+  margin-top: 18px;
+  /* display: flex;
+  gap: 5px;
+  align-items: center; */
+`;
+
+const HomeLink = styled.a`
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 500ms ease-in-out;
+
+  &:hover {
+    color: var(--accent);
+    /* letter-spacing: 0.5px; */
+  }
+`;
+
 export {
+  Wrapper,
+  Bg,
   Container,
   GoBack,
   Description,
@@ -65,4 +110,6 @@ export {
   Addition,
   AdditionList,
   AdditionLink,
+  LinkWrapper,
+  HomeLink,
 };

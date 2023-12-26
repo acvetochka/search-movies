@@ -1,4 +1,11 @@
 @import-normalize; /* bring in normalize.css styles */
+:root {
+  --accent: #c25151;
+  --primary: black;
+  --primary-bg: #fff;
+
+
+}
 
 body {
   margin: 0;
@@ -7,6 +14,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* overflow: auto; */
   /* overflow: scroll; */
 }
 

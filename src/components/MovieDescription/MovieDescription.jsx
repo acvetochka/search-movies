@@ -10,21 +10,35 @@ import {
   Addition,
   AdditionList,
   AdditionLink,
+  LinkWrapper,
+  HomeLink,
+  Wrapper,
+  Bg,
 } from './MovieDescription.styled';
 import what from './what.jpg';
+import { BiLinkExternal } from 'react-icons/bi';
 
 function MovieDescription({ details }) {
-  const { title, release_date, vote_average, overview, genres, poster_path } =
-    details;
+  console.log(details);
+  const {
+    title,
+    release_date,
+    vote_average,
+    overview,
+    genres,
+    poster_path,
+    homepage,
+  } = details;
   const date = new Date(release_date).getFullYear();
   const location = useLocation();
   const backLinkLocation = useRef(location.state?.from ?? './movies');
 
   return (
-    <>
+    <Wrapper>
       <GoBack to={backLinkLocation.current}>Go back</GoBack>
       {details && (
         <>
+          <Bg bg={`https://image.tmdb.org/t/p/w300/${details.backdrop_path}`} />
           <Container>
             <img
               src={
@@ -47,6 +61,16 @@ function MovieDescription({ details }) {
               {genres
                 ? genres.map(genre => genre.name + ' ')
                 : 'Not information'}
+              <LinkWrapper>
+                <HomeLink
+                  href={homepage}
+                  target="_blank"
+                  rel="noreferrer noopener nofollow"
+                >
+                  Official page
+                  <BiLinkExternal width={16} height={16} />
+                </HomeLink>
+              </LinkWrapper>
             </Description>
           </Container>
           <Addition>
@@ -65,7 +89,7 @@ function MovieDescription({ details }) {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </>
+    </Wrapper>
   );
 }
 

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Header = styled.header`
   position: fixed;
+  z-index: 100;
   padding: 10px 15px;
   width: 100%;
   /* height: 40px; */
@@ -16,6 +17,14 @@ const Navi = styled.nav`
 
 const Main = styled.main`
   padding: 50px 20px 20px 20px;
+  position: relative;
+  /* background-image: url('https://image.tmdb.org/t/p/w300/rmfIhftLXpHEZzkLSpWQMZhirMJ.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(5px);
+  backdrop-filter: blur(200px);
+  backdrop-filter: opacity(20%); */
 `;
 
 const StyledLink = styled(NavLink)`
