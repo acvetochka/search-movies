@@ -15,7 +15,7 @@ import {
   Wrapper,
   Bg,
 } from './MovieDescription.styled';
-import what from './what.jpg';
+import what from '../../images/what.jpg';
 import { BiLinkExternal } from 'react-icons/bi';
 
 function MovieDescription({ details }) {

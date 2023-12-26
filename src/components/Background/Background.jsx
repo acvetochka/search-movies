@@ -1,4 +1,4 @@
-const { Wrapper, Bg } = require('./Background.styled');
+const { Bg } = require('./Background.styled');
 
 function Background({ movie }) {
   return (

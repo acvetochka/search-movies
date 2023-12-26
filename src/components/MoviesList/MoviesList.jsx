@@ -1,6 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { List, MovieItem, MovieLink, MovieTitle } from './MovieList.styled';
+import {
+  List,
+  MovieItem,
+  MovieLink,
+  MovieTitle,
+  MovieTitleWrapper,
+} from './MovieList.styled';
+import what from '../../images/what.jpg';
 
 function MoviesList({ movies }) {
   // console.log(movies);
@@ -23,11 +30,19 @@ function MoviesList({ movies }) {
                   state={{ from: location }}
                 >
                   <img
-                    src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                    // src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                    src={
+                      poster_path
+                        ? 'https://image.tmdb.org/t/p/w300' + poster_path
+                        : what
+                    }
                     alt={title}
-                    width="150"
+                    width={150}
+                    height={225}
                   />
-                  <MovieTitle>{title}</MovieTitle>
+                  <MovieTitleWrapper>
+                    <MovieTitle>{title}</MovieTitle>
+                  </MovieTitleWrapper>
                 </MovieLink>
               </MovieItem>
             )

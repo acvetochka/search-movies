@@ -1,4 +1,4 @@
-import { Image, ImageSmall, Title, Wrapper } from './BestMovies.styles';
+import { Image,  Wrapper } from './BestMovies.styles';
 
 function BestMovie({ movies }) {
   //   const movie = movies[0];

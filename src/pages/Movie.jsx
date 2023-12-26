@@ -16,7 +16,10 @@ function Movie() {
 
   useEffect(() => {
     if (!query) return;
-    fetchMovieSearch(query).then(res => setMovies([...res]));
+    fetchMovieSearch(query).then(res => {
+      const allMovies = res.filter(m => m.title);
+      setMovies([...allMovies]);
+    });
   }, [query]);
 
   return (

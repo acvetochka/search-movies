@@ -1,7 +1,7 @@
 import MoviesList from 'components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'helpers/api';
-import BestMovie from 'components/BestMovies/BestMovies';
+// import BestMovie from 'components/BestMovies/BestMovies';
 import Background from 'components/Background/Background';
 import Title from 'components/Title/Title';
 
