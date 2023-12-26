@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-05-movies",
+  "name": "search-movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://acvetochka.github.io/goit-react-hw-05-movies/",
+  "homepage": "https://acvetochka.github.io/search-movies/",
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@testing-library/jest-dom": "^5.16.3",
