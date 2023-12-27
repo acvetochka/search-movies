@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 const Form = styled.form`
   display: flex;
+  justify-content: center;
   gap: 10px;
   padding-top: 20px;
 `;

@@ -22,6 +22,7 @@ async function fetchMovieSearch(query) {
   );
   return response.data.results;
 }
+
 async function fetchMovieDetails(id) {
   const response = await axios.get(`/movie/${id}?language=en-US`, options);
   return response.data;
