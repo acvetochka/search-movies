@@ -9,6 +9,8 @@ const Header = styled.header`
   /* height: 40px; */
   background-color: #fff;
   box-shadow: -4px -5px 19px #222222;
+  display: flex;
+  justify-content: center;
 `;
 const Navi = styled.nav`
   display: flex;
