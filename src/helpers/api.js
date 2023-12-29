@@ -36,9 +36,15 @@ async function fetchAddition(id, param) {
   return response.data;
 }
 
+async function fetchGenre() {
+  const response = await axios.get(`genre/movie/list`, options);
+  return response.data;
+}
+
 export {
   fetchTrendingMovies,
   fetchMovieSearch,
   fetchMovieDetails,
   fetchAddition,
+  fetchGenre,
 };

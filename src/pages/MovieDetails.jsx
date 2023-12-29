@@ -9,8 +9,12 @@ function MovieDetails() {
   useEffect(() => {
     if (!movieId) return;
     fetchMovieDetails(movieId)
-      .then(res => setDetails({ ...res }))
+      .then(res => {
+        console.log(res);
+        setDetails({ ...res });
+      })
       .catch(err => console.log(err));
+    
   }, [movieId]);
 
   return <MovieDescription details={details} />;

@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     fetchTrendingMovies().then(res => {
-      // console.log(res);
+      console.log(res);
       const allMovies = res.filter(m => m.title);
       setMovies(allMovies);
       setBestMovie(allMovies[0]);

@@ -5,7 +5,7 @@ const ReviewList = styled.ul`
   list-style: none;
 `;
 const ReviewItem = styled.li`
-  background-color: #f2eee6;
+  background-color: #f2eee66e;
   padding: 20px;
   font-size: 14px;
   text-align: justify;
