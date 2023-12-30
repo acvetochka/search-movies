@@ -14,7 +14,7 @@ import what from '../../images/what.jpg';
 function MoviesList({ movies }) {
   // console.log(movies);
   const location = useLocation();
-  console.log(movies);
+  // console.log(movies);
   const dateToYear = date => {
     return new Date(date).getFullYear();
   };
@@ -31,13 +31,13 @@ function MoviesList({ movies }) {
           ({ id, title, poster_path, release_date, vote_average }) =>
             title && (
               <MovieItem key={id}>
+                <Average>
+                  <p>
+                    {Math.round(vote_average * 10)}
+                    <span>%</span>
+                  </p>
+                </Average>
                 <MovieItemWrapper>
-                  <Average>
-                    <p>
-                      {Math.round(vote_average * 10)}
-                      <span>%</span>
-                    </p>
-                  </Average>
                   <MovieLink
                     key={id}
                     to={`/movies/${id}`}

@@ -20,6 +20,7 @@ const MovieItem = styled.li`
 
 const MovieItemWrapper = styled.div`
   overflow: hidden;
+  position: relative;
 `;
 
 const MovieLink = styled(Link)`
@@ -96,6 +97,7 @@ const Average = styled.div`
   align-items: center;
   color: #fff;
   border: 2px solid var(--accent);
+  z-index: 10;
 
   & span {
     font-size: 8px;

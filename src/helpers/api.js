@@ -41,10 +41,27 @@ async function fetchGenre() {
   return response.data;
 }
 
+async function fetchByGenres(genre) {
+  const response = await axios.get(
+    `discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genre}`,
+    options
+  );
+  return response.data;
+  // .request(options)
+  // .then(function (response) {
+  //   console.log(response.data);
+  // })
+  // .catch(function (error) {
+  //   console.error(error);
+  // });
+}
+
+// /discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=Action
 export {
   fetchTrendingMovies,
   fetchMovieSearch,
   fetchMovieDetails,
   fetchAddition,
   fetchGenre,
+  fetchByGenres,
 };
