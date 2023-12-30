@@ -1,8 +1,10 @@
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
+  Average,
   List,
   MovieItem,
+  MovieItemWrapper,
   MovieLink,
   MovieTitle,
   MovieTitleWrapper,
@@ -12,7 +14,7 @@ import what from '../../images/what.jpg';
 function MoviesList({ movies }) {
   // console.log(movies);
   const location = useLocation();
-
+  console.log(movies);
   const dateToYear = date => {
     return new Date(date).getFullYear();
   };
@@ -26,30 +28,40 @@ function MoviesList({ movies }) {
     <>
       <List>
         {movies.map(
-          ({ id, title, poster_path, release_date }) =>
+          ({ id, title, poster_path, release_date, vote_average }) =>
             title && (
               <MovieItem key={id}>
-                <MovieLink
-                  key={id}
-                  to={`/movies/${id}`}
-                  state={{ from: location }}
-                >
-                  <img
-                    // src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-                    src={
-                      poster_path
-                        ? 'https://image.tmdb.org/t/p/w300' + poster_path
-                        : what
-                    }
-                    alt={title}
-                    width={150}
-                    height={225}
-                  />
-                  <MovieTitleWrapper>
-                    <MovieTitle>{title}</MovieTitle>
-                    {release_date && <p>{dateToYear(release_date)}</p>}
-                  </MovieTitleWrapper>
-                </MovieLink>
+                <MovieItemWrapper>
+                  <Average>
+                    <p>
+                      {Math.round(vote_average * 10)}
+                      <span>%</span>
+                    </p>
+                  </Average>
+                  <MovieLink
+                    key={id}
+                    to={`/movies/${id}`}
+                    state={{ from: location }}
+                  >
+                    <img
+                      // src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                      src={
+                        poster_path
+                          ? 'https://image.tmdb.org/t/p/w300' + poster_path
+                          : what
+                      }
+                      alt={title}
+                      width={150}
+                      height={225}
+                    />
+                    <MovieTitleWrapper>
+                      <MovieTitle>{title}</MovieTitle>
+                      {release_date && (
+                        <MovieTitle>{dateToYear(release_date)}</MovieTitle>
+                      )}
+                    </MovieTitleWrapper>
+                  </MovieLink>
+                </MovieItemWrapper>
               </MovieItem>
             )
         )}
@@ -66,4 +78,5 @@ MoviesList.propTypes = {
     })
   ).isRequired,
 };
+
 export default MoviesList;

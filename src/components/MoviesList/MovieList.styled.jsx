@@ -5,7 +5,7 @@ const List = styled.ul`
   display: flex;
   /* flex-direction: column; */
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
   list-style: none;
   padding: 0;
   justify-content: center;
@@ -15,9 +15,13 @@ const MovieItem = styled.li`
   position: relative;
   width: 150px;
   border-radius: 5px;
-  overflow: hidden;
   box-shadow: 0 2px 7px #332f2f;
 `;
+
+const MovieItemWrapper = styled.div`
+  overflow: hidden;
+`;
+
 const MovieLink = styled(Link)`
   font-size: 18px;
   text-decoration: none;
@@ -72,20 +76,38 @@ const MovieTitle = styled.p`
   text-overflow: ellipsis;
   overflow: hidden;
   /* height: 100%; */
-  max-height: 3em; /* Встановлюємо максимальну висоту на три рядки */
   line-height: 1em;
-  /* Встановлюємо висоту лінії тексту на один рядок */
+  max-height: 3em;
   overflow: hidden;
+  text-shadow: 0 0 2px black;
 `;
 
-// .card-overlay {
+const Average = styled.div`
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border: 2px solid var(--accent);
 
-// }
+  & span {
+    font-size: 8px;
+  }
+`;
 
-// .category-books__link:hover .card-overlay {
-//     transform: translateY(0);
-//     opacity: 1;
-// }
-
-// const Poster = styled.img``;
-export { List, MovieItem, MovieLink, MovieTitleWrapper, MovieTitle };
+export {
+  List,
+  MovieItem,
+  MovieItemWrapper,
+  MovieLink,
+  MovieTitleWrapper,
+  MovieTitle,
+  Average,
+};

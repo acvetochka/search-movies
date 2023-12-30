@@ -1,6 +1,6 @@
 @import-normalize; /* bring in normalize.css styles */
 :root {
-  --accent: #c25151;
+  --accent: #c25151CC;
   --primary: black;
   --primary-bg: #fff;
 
