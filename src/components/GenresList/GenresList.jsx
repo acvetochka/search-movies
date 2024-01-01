@@ -6,10 +6,12 @@ function GenresList() {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    fetchGenre().then(res => {
-      //   console.log(res.genres);
-      setGenres(res.genres);
-    });
+    const fetchGenres = async () =>
+      await fetchGenre().then(res => {
+        setGenres(res.genres);
+      });
+
+    fetchGenres();
   }, []);
 
   return (
@@ -18,7 +20,7 @@ function GenresList() {
         genres.map(g => (
           <li key={g.id}>
             <p>{g.name}</p>
-            <GenresListItem genre={g.name} />
+            <GenresListItem genre={g} />
           </li>
         ))}
     </ul>
@@ -26,3 +28,5 @@ function GenresList() {
 }
 
 export default GenresList;
+
+

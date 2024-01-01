@@ -5,7 +5,7 @@ import Search from 'components/Search/Search';
 import { fetchMovieSearch } from 'helpers/api';
 import SearchBg from 'components/SearchBg/SearchBg';
 import NoVideo from 'components/NoVideo/NoVideo';
-import GenresList from 'components/GenresList/GenresList';
+// import GenresList from 'components/GenresList/GenresList';
 
 // import kino from '../images/kino.png';
 // import films from '../images/films.webp';
@@ -39,7 +39,7 @@ function Movie() {
     <div>
       <SearchBg />
       <Search location={location} onSubmit={handleSubmit} />
-      <GenresList />
+      {/* <GenresList /> */}
       {movies.length === 0 ? <NoVideo /> : <MoviesList movies={movies} />}
     </div>
   );

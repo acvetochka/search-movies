@@ -4,16 +4,21 @@ import { useEffect, useState } from 'react';
 
 function GenresListItem({ genre }) {
   const [movies, setMovies] = useState([]);
+  const { name } = genre;
 
   useEffect(() => {
-    fetchByGenres(genre).then(res => {
-      //   console.log(res.results);
-      setMovies(res.results);
-    });
-  }, [genre]);
+    const fetchMovies = async () =>
+      await fetchByGenres(name).then(res => {
+        //   console.log(res.results);
+        setMovies(res.results);
+      });
+    fetchMovies();
+    // console.log(movies);
+  }, [name]);
 
   useEffect(() => {
     setMovies(movies);
+    // console.log(movies);
   }, [movies]);
 
   return <ul>{movies && <MoviesList movies={movies} />}</ul>;
