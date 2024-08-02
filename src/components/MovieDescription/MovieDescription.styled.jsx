@@ -24,6 +24,10 @@ const Bg = styled.div`
 const Container = styled.div`
   display: flex;
   margin-bottom: 20px;
+
+  @media (max-width: 640px){
+  flex-direction: column;
+  }
 `;
 
 const GoBack = styled(Link)`
